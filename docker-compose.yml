@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: fancyindex.Dockerfile
+    container_name: archmirror
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /srv:/srv:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - ./sites/mirror.int3nse.com.conf:/etc/nginx/http.d/mirror.int3nse.com.conf:ro
