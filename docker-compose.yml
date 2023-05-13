@@ -4,7 +4,8 @@ services:
   mirror:
     build:
       context: .
-      dockerfile: fancyindex.Dockerfile
+      dockerfile: Dockerfiles/fancyindex.Dockerfile
+    image: alpine-nginx-site-fancyindex:latest
     container_name: archmirror
     restart: unless-stopped
     ports:
@@ -14,8 +15,8 @@ services:
       - /srv:/srv:ro
       - /etc/letsencrypt:/etc/letsencrypt:ro
       - /var/log/nginx/mirror.int3nse.com:/var/log/nginx/mirror.int3nse.com
-      - ./sites/mirror.int3nse.com.conf:/etc/nginx/http.d/mirror.int3nse.com.conf:ro
-      - ./sites/transfer.int3nse.com.conf:/etc/nginx/http.d/transfer.int3nse.com.conf:ro
+      - ./sites/mirror/mirror.int3nse.com.conf:/etc/nginx/http.d/mirror.int3nse.com.conf:ro
+      - ./sites/transfer/transfer.int3nse.com.conf:/etc/nginx/http.d/transfer.int3nse.com.conf:ro
 
   transfer:
     image: dutchcoders/transfer.sh:latest
@@ -30,8 +31,3 @@ services:
       - 8080:8080
     volumes:
       - /transfer:/transfer
-
-
-
-
-# sudo docker run -p 8080:8080 -v /transfer:/transfer --rm --name transfersh dutchcoders/transfer.sh:latest --provider local --temp-path /transfer/ --basedir /transfer/ --max-upload-size 3221225 --purge-days 1 --purge-interval 1
