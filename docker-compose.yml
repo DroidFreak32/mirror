@@ -1,6 +1,9 @@
 version: '3'
 
 services:
+
+# This config spins up 3 containers: my archlinux mirror, transfer.sh instance and an IRC relay
+
   mirror:
     build:
       context: .
@@ -12,10 +15,15 @@ services:
       - 80:80
       - 443:443
     volumes:
+      # Rsync crontab syncs the mirror
       - /srv:/srv:ro
+      # My TLS certificate from certbot
       - /etc/letsencrypt:/etc/letsencrypt:ro
+      # Allow to write {access,error}.log
       - /var/log/nginx/mirror.int3nse.com:/var/log/nginx/mirror.int3nse.com
+      # Main Nginx config
       - ./sites/mirror/mirror.int3nse.com.conf:/etc/nginx/http.d/mirror.int3nse.com.conf:ro
+      # Nginx proxy config for transfer.sh
       - ./sites/transfer/transfer.int3nse.com.conf:/etc/nginx/http.d/transfer.int3nse.com.conf:ro
 
   transfer:
