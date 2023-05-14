@@ -31,3 +31,31 @@ services:
       - 8080:8080
     volumes:
       - /transfer:/transfer
+
+  irc-relay:
+    build:
+      # Pass UID and GID from env to dockerfile to create non-root user in image
+      args:
+        UID: "${UID}"
+        GID: "${GID}"
+
+      context: .
+      dockerfile: Dockerfiles/weechat.Dockerfile
+
+    # Name and tag of the image
+    image: weechat-relay:latest
+    container_name: weechat
+    # tty: true
+    # Run as the current UID:GID of host executing this
+    # user: "${UID}:${GID}"
+    secrets:
+      - weechat-passphrase
+    ports:
+      - 9001:9001
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - ./sites/irc-relay:/weechat
+
+secrets:
+   weechat-passphrase:
+     file: secrets/weechat-passphrase.txt
