@@ -1,3 +1,4 @@
 .gitsecret/keys/random_seed
 !*.secret
 secrets/weechat-passphrase.txt
+sites/portainer
