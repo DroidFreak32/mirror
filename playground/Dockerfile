@@ -1,0 +1,6 @@
+version: "3"
+
+services:
+  myalpine:
+    image: alpine
+    tty: true

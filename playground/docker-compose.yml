@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  myalpine:
+    image: alpine
+    tty: true
+    volumes:
+      - letsencrypt:/etc/letsencrypt:ro
+
+volumes:
+  letsencrypt:
+    driver_opts:
+      type: none
+      device: /etc/letsencrypt
+      o: bind
