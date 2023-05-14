@@ -18,7 +18,7 @@ services:
       # Rsync crontab syncs the mirror
       - /srv:/srv:ro
       # My TLS certificate from certbot
-      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - letsencrypt:/etc/letsencrypt:ro
       # Allow to write {access,error}.log
       - /var/log/nginx/mirror.int3nse.com:/var/log/nginx/mirror.int3nse.com
       # Main Nginx config
@@ -61,9 +61,29 @@ services:
     ports:
       - 9001:9001
     volumes:
-      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - letsencrypt:/etc/letsencrypt:ro
       - ./sites/irc-relay:/weechat
+
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    ports:
+      - 8000:8000
+      - 9443:9443
+
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./sites/portainer/:/data
+
 
 secrets:
    weechat-passphrase:
      file: secrets/weechat-passphrase.txt
+
+volumes:
+  letsencrypt:
+    driver_opts:
+      type: none
+      device: /etc/letsencrypt
+      o: bind
