@@ -11,9 +11,9 @@ RUN apk update && \
     apk add weechat-python weechat-perl screen
 
 # Create a new user matching host's current user
-RUN addgroup -g ${GID} user && \
-    adduser -u ${UID} -D -G user user && \
-    addgroup user wheel
+RUN addgroup -g ${GID} user; \
+    adduser -u ${UID} -D -G user user; \
+    addgroup user wheel; exit 0
 
 COPY --chmod=755 Dockerfiles/weechat_entry.sh /
 
