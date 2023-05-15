@@ -1,4 +1,5 @@
 version: '3'
+name: portainer
 services:
   portainer:
     image: portainer/portainer-ce:latest

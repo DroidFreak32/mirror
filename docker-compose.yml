@@ -1,9 +1,7 @@
 version: '3'
-
+name: webservers
 services:
-
 # This config spins up 3 containers: my archlinux mirror, transfer.sh instance and an IRC relay
-
   mirror:
     build:
       context: .
