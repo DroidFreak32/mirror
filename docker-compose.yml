@@ -54,17 +54,21 @@ services:
     # tty: true
     # Run as the current UID:GID of host executing this
     # user: "${UID}:${GID}"
-    secrets:
-      - weechat-passphrase
+
+    # secrets:
+    #   - weechat-passphrase
+    environment:
+      - WEECHAT_HOME=${WEECHAT_HOME}
+      - WEECHAT_PASSPHRASE=${WEECHAT_PASSPHRASE}
     ports:
       - 9001:9001
     volumes:
       - letsencrypt:/etc/letsencrypt:ro
       - ./sites/irc-relay:/weechat
 
-secrets:
-   weechat-passphrase:
-     file: secrets/weechat-passphrase.txt
+# secrets:
+#    weechat-passphrase:
+#      file: secrets/weechat-passphrase.txt
 
 volumes:
   letsencrypt:
