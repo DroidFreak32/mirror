@@ -9,7 +9,7 @@ cat /etc/letsencrypt/live/irc.int3nse.com/fullchain.pem /etc/letsencrypt/live/ir
 chown user:user -R /weechat
 
 # Don't run headlessly but don't use current tty either
-su - user -c "export WEECHAT_HOME=$WEECHAT_HOME; screen -d -m weechat"
+su user -c "screen -d -m weechat"
 
 # Keep the container alive
 tail -n1 -f /weechat/weechat.log

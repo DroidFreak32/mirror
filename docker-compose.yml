@@ -51,20 +51,17 @@ services:
     # Name and tag of the image
     image: weechat-relay:latest
     container_name: weechat
+    environment:
+      - WEECHAT_HOME=${WEECHAT_HOME}
+      - WEECHAT_PASSPHRASE=${WEECHAT_PASSPHRASE}
     # tty: true
     # Run as the current UID:GID of host executing this
     # user: "${UID}:${GID}"
-    secrets:
-      - weechat-passphrase
     ports:
       - 9001:9001
     volumes:
       - letsencrypt:/etc/letsencrypt:ro
       - ./sites/irc-relay:/weechat
-
-secrets:
-   weechat-passphrase:
-     file: secrets/weechat-passphrase.txt
 
 volumes:
   letsencrypt:

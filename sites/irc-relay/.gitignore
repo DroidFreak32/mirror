@@ -2,4 +2,3 @@ logs
 weechat.log
 weechat_fifo_*
 tls/relay.pem
-sec.conf
