@@ -64,19 +64,6 @@ services:
       - letsencrypt:/etc/letsencrypt:ro
       - ./sites/irc-relay:/weechat
 
-  portainer:
-    image: portainer/portainer-ce:latest
-    container_name: portainer
-    ports:
-      - 8000:8000
-      - 9443:9443
-
-    restart: always
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./sites/portainer/:/data
-
-
 secrets:
    weechat-passphrase:
      file: secrets/weechat-passphrase.txt
