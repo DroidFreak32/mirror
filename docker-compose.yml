@@ -15,14 +15,18 @@ services:
     volumes:
       # Rsync crontab syncs the mirror
       - /srv:/srv:ro
-      # My TLS certificate from certbot
+      # My TLS certificates from certbot
       - letsencrypt:/etc/letsencrypt:ro
+      # Certbot renewal challenges
+      - acme-challenge:/var/www/.well-known/acme-challenge
       # Allow to write {access,error}.log
       - /var/log/nginx/mirror.int3nse.com:/var/log/nginx/mirror.int3nse.com
       # Main Nginx config
       - ./sites/mirror/mirror.int3nse.com.conf:/etc/nginx/http.d/mirror.int3nse.com.conf:ro
       # Nginx proxy config for transfer.sh
-      - ./sites/transfer/transfer.int3nse.com.conf:/etc/nginx/http.d/transfer.int3nse.com.conf:ro
+      - ./sites/transfer/transfer.int3nse.com.conf:/etc/nginx/http.d/transfer.int3nse.com.conf
+      # Weechat relay blank page for certbot
+      - ./sites/irc-relay/irc.int3nse.com.conf:/etc/nginx/http.d/irc.int3nse.com.conf
 
   transfer:
     image: dutchcoders/transfer.sh:latest
@@ -68,4 +72,9 @@ volumes:
     driver_opts:
       type: none
       device: /etc/letsencrypt
+      o: bind
+  acme-challenge:
+    driver_opts:
+      type: none
+      device: /var/www/.well-known/acme-challenge
       o: bind
