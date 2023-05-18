@@ -14,7 +14,7 @@ services:
       - 443:443
     volumes:
       # Rsync crontab syncs the mirror
-      - /srv:/srv:ro
+      - /srv/http/mirror.int3nse.com:/srv/http/mirror.int3nse.com:ro
       # My TLS certificates from certbot
       - letsencrypt:/etc/letsencrypt:ro
       # Certbot renewal challenges
@@ -23,6 +23,7 @@ services:
       - /var/log/nginx/mirror.int3nse.com:/var/log/nginx/mirror.int3nse.com
       # Main Nginx config
       - ./sites/mirror/mirror.int3nse.com.conf:/etc/nginx/http.d/mirror.int3nse.com.conf:ro
+      - ./sites/mirror/indexui:/srv/http/indexui:ro
       # Nginx proxy config for transfer.sh
       - ./sites/transfer/transfer.int3nse.com.conf:/etc/nginx/http.d/transfer.int3nse.com.conf
       # Weechat relay blank page for certbot
