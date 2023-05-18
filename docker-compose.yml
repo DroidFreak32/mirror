@@ -23,6 +23,8 @@ services:
       - /var/log/nginx/mirror.int3nse.com:/var/log/nginx/mirror.int3nse.com
       # Main Nginx config
       - ./sites/mirror/mirror.int3nse.com.conf:/etc/nginx/http.d/mirror.int3nse.com.conf:ro
+      # the-eye.eu theme
+      - ./sites/mirror/indexui:/var/www/indexui:ro
       # Nginx proxy config for transfer.sh
       - ./sites/transfer/transfer.int3nse.com.conf:/etc/nginx/http.d/transfer.int3nse.com.conf
       # Weechat relay blank page for certbot
