@@ -2,3 +2,4 @@
 !*.secret
 secrets/weechat-passphrase.txt
 sites/portainer
+sites/your-spotify/db

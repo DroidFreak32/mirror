@@ -29,6 +29,10 @@ services:
       - ./sites/transfer/transfer.int3nse.com.conf:/etc/nginx/http.d/transfer.int3nse.com.conf
       # Weechat relay blank page for certbot
       - ./sites/irc-relay/irc.int3nse.com.conf:/etc/nginx/http.d/irc.int3nse.com.conf
+      # Nginx proxy config for Your Spotify
+      - ./sites/your-spotify/yspot.int3nse.com.conf:/etc/nginx/http.d/yspot.int3nse.com.conf
+      # Nginx proxy config for Your Spotify server
+      - ./sites/your-spotify/yspot-api.int3nse.com.conf:/etc/nginx/http.d/yspot-api.int3nse.com.conf
 
   transfer:
     image: dutchcoders/transfer.sh:latest
@@ -43,6 +47,50 @@ services:
       - 8080:8080
     volumes:
       - /transfer:/transfer
+
+########## Your Spotify section start ##########
+
+  ys_server:
+    image: yooooomi/your_spotify_server
+    container_name: ys_server
+    restart: always
+    # Can be commented as we are using nginx to connect directly to this container
+    # ports:
+    #   - "8081:8080"
+    links:
+      - ys_mongo
+    depends_on:
+      - ys_mongo
+    environment:
+      API_ENDPOINT: https://yspot-api.int3nse.com
+      # API_ENDPOINT: https://yspot.int3nse.com/api
+      CLIENT_ENDPOINT: https://yspot.int3nse.com
+      # .env file
+      SPOTIFY_PUBLIC: ${SPOTIFY_PUBLIC}
+      SPOTIFY_SECRET: ${SPOTIFY_SECRET}
+
+  # Your spotify uses an external mongo db
+  ys_mongo:
+    # Avoid git permission issue
+    user: "${UID}:${GID}"
+    container_name: mongo
+    image: mongo:6
+    volumes:
+      - ./sites/your-spotify/db:/data/db
+
+  # The actual webpage to connect to
+  ys_web:
+    image: yooooomi/your_spotify_client
+    container_name: ys_web
+    restart: always
+    # Can be commented as we are using nginx to connect directly to this container
+    # ports:
+    #   - "8082:3000"
+    environment:
+      API_ENDPOINT: https://yspot-api.int3nse.com
+      # API_ENDPOINT: https://yspot.int3nse.com/api
+
+########## Your Spotify section END ##########
 
   irc-relay:
     build:
