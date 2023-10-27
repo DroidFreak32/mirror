@@ -1,6 +1,5 @@
 version: '3'
 name: webservers
-
 services:
 # This config spins up 3 containers: my archlinux mirror, transfer.sh instance and an IRC relay
   mirror:
@@ -10,9 +9,9 @@ services:
     image: alpine-nginx-site-fancyindex:latest
     container_name: archmirror
     restart: unless-stopped
-    # ports:
-    #   - 80:80
-    #   - 443:443
+    ports:
+      - 80:80
+      - 443:443
     volumes:
       # Rsync crontab syncs the mirror
       - /srv:/srv:ro
@@ -34,9 +33,6 @@ services:
       - ./sites/your-spotify/yspot.int3nse.com.conf:/etc/nginx/http.d/yspot.int3nse.com.conf
       # Nginx proxy config for Your Spotify server
       - ./sites/your-spotify/yspot-api.int3nse.com.conf:/etc/nginx/http.d/yspot-api.int3nse.com.conf
-    networks:
-      - vpn-only-v4
-      - vpn-only-v6
 
   transfer:
     image: dutchcoders/transfer.sh:latest
