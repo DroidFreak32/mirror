@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <!-- https://pastebin.com/cSbNTvRX -->
 
 <svg
-   width="1024px"
-   height="1024px"
-   viewBox="0 0 1024 1024"
+   width="603.96985"
+   height="603.96985"
+   viewBox="0 0 603.96985 603.96985"
    version="1.1"
    id="svg5"
    inkscape:version="1.2.2 (b0a84865, 2022-12-01)"
@@ -19,23 +20,23 @@
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
      id="namedview7"
-     pagecolor="#000000"
+     pagecolor="#f0f0f0"
      bordercolor="#000000"
      borderopacity="1"
      inkscape:showpageshadow="2"
-     inkscape:pageopacity="1"
+     inkscape:pageopacity="0.13333333"
      inkscape:pagecheckerboard="true"
      inkscape:deskcolor="#dddddd"
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:lockguides="false"
-     inkscape:zoom="0.020501453"
-     inkscape:cx="6560.5106"
-     inkscape:cy="10877.278"
-     inkscape:window-width="1481"
-     inkscape:window-height="826"
-     inkscape:window-x="1927"
-     inkscape:window-y="25"
+     inkscape:zoom="1.1662912"
+     inkscape:cx="288.09271"
+     inkscape:cy="310.8143"
+     inkscape:window-width="1680"
+     inkscape:window-height="945"
+     inkscape:window-x="1728"
+     inkscape:window-y="0"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer2"
      showguides="false" />
@@ -201,8 +202,8 @@
        miter_limit="100"
        attempt_force_join="true" />
     <filter
-       style="color-interpolation-filters:sRGB;"
-       x="-0.0079861452"
+       style="color-interpolation-filters:sRGB"
+       x="-0.0079861451"
        width="1.0159723"
        y="-0.002386221"
        height="1.0047724"
@@ -241,8 +242,8 @@
          id="feComposite12441" />
     </filter>
     <filter
-       style="color-interpolation-filters:sRGB;"
-       x="-0.0079861452"
+       style="color-interpolation-filters:sRGB"
+       x="-0.0079861451"
        width="1.0159723"
        y="-0.002386221"
        height="1.0047724"
@@ -281,7 +282,7 @@
          id="feComposite12453" />
     </filter>
     <filter
-       style="color-interpolation-filters:sRGB;"
+       style="color-interpolation-filters:sRGB"
        x="-0.00010782435"
        width="1.0002156"
        y="-0.00012515419"
@@ -321,7 +322,7 @@
          id="feComposite12705" />
     </filter>
     <filter
-       style="color-interpolation-filters:sRGB;"
+       style="color-interpolation-filters:sRGB"
        x="-0.00010782435"
        width="1.0002156"
        y="-0.00012515419"
@@ -433,7 +434,7 @@
      style="display:inline"
      transform="translate(-210.01486,-210.01486)">
     <path
-       style="fill:#bb0a1e;stroke:none;stroke-width:2;fill-rule:nonzero;filter:url(#filter12707)"
+       style="fill:#bb0a1e;fill-rule:nonzero;stroke:none;stroke-width:2;filter:url(#filter12707)"
        d="m 453.02125,478.24737 0.25882,-0.44829 -163.86437,163.86437 223.08385,-128.79753 -1,0 223.08462,128.79798 -163.86479,-163.8648 0.25882,0.44829 -58.97841,-220.1104 z m 116.09444,0.77648 158.68325,158.68326 1.20711,-1.57314 -217.0065,-125.28878 -217.00573,125.28833 1.20711,1.57314 158.68283,-158.68283 58.08196,-216.76432 -1.93186,0 z"
        id="path2563"
        inkscape:path-effect="#path-effect2565"
@@ -449,7 +450,8 @@
      inkscape:groupmode="layer"
      id="layer5"
      inkscape:label="Outer Circle"
-     transform="translate(-210.01486,-210.01486)">
+     transform="translate(-210.01486,-210.01486)"
+     style="display:inline">
     <circle
        style="fill:none;stroke:#bb0a1e;stroke-width:2;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path1962"
